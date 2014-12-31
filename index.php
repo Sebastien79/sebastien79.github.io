@@ -20,7 +20,7 @@ require_once('Forecast.io/Forecast.php');
 use Forecast\Forecast;
 
 // Forecast API
-define('FORECASTIO_API_KEY', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define('FORECASTIO_API_KEY', '7612050acd5d54a54682bd6c26f2ba30');
 
 $lat = '40.7056258';
 $long = '-73.97968';
