@@ -36,6 +36,18 @@
             popup.style.display = "none";
           }
         });
+      } else {
+        window.addEventListener("load", function () {
+          // Override the import map
+          var overrides = window.importMapOverrides.getOverrideMap();
+          if (overrides && overrides.imports) {
+            var script = document.createElement('script');
+            script.id = "override-map";
+            script.type = "systemjs-importmap";
+            script.textContent = JSON.stringify(overrides);
+            document.head.appendChild(script);
+          }
+        });
       }
     })();
   </script>
