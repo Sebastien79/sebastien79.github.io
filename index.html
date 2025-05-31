@@ -26,6 +26,8 @@
   <script>
     // Apply any stored overrides by creating an override map
     (function () {
+       // Show the UI panel if devtools flag is set
+      var popup = document.querySelector('import-map-overrides-full');
       if (location.hostname === "localhost") {
         var overrides = window.importMapOverrides.getOverrideMap();
         if (overrides && overrides.imports) {
@@ -39,13 +41,15 @@
         // Check for devtools flag in localStorage
         if (localStorage.getItem('devtools') === 'true') {
           window.addEventListener('load', function () {
-            // Show the UI panel if devtools flag is set
-            var popup = document.querySelector('import-map-overrides-full');
             if (popup) {
               popup.setAttribute('show', true);
               console.log('Devtools panel opened via localStorage flag');
             }
           });
+        }
+      } else {
+        if (popup) {
+          popup.setAttribute('show', false);
         }
       }
     })();
