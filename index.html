@@ -8,10 +8,7 @@
   <link rel="icon" href="/dist/art/favicon.ico" />
   
   <title>Live Interactive Playground</title>
-
-  <!-- Import map overrides library -->
-  <script src="/dist/vendor/import-map-overrides/import-map-overrides.min.js"></script>
-
+  
   <!-- BASE IMPORT MAP - Will be overridden -->
   <script type="systemjs-importmap" id="base-map">
         {
@@ -22,36 +19,6 @@
       }
     }
     </script>
-
-  <!-- This script runs before SystemJS loads to set up overrides -->
-  <script>
-    // Apply any stored overrides by creating an override map
-    (function () {
-      // Hide the UI panel if not in dev
-      if (location.hostname !== "localhost" || localStorage.getItem('devtools') === 'false' || localStorage.getItem('devtools') === null) {
-        window.addEventListener("load", function () {
-          var popup = document.querySelector("import-map-overrides-full");
-          console.log("popup", popup);
-
-          if (popup) {
-            popup.style.display = "none";
-          }
-        });
-      } else {
-        window.addEventListener("load", function () {
-          // Override the import map
-          var overrides = window.importMapOverrides.getOverrideMap();
-          if (overrides && overrides.imports) {
-            var script = document.createElement('script');
-            script.id = "override-map";
-            script.type = "systemjs-importmap";
-            script.textContent = JSON.stringify(overrides);
-            document.head.appendChild(script);
-          }
-        });
-      }
-    })();
-  </script>
 
   <!-- Load SystemJS after all import maps are set -->
   <script src="/dist/vendor/systemjs/system.js" type="application/javascript"></script>
