@@ -26,31 +26,16 @@
   <script>
     // Apply any stored overrides by creating an override map
     (function () {
-       // Show the UI panel if devtools flag is set
-      var popup = document.querySelector('import-map-overrides-full');
-      if (location.hostname === "localhost") {
-        var overrides = window.importMapOverrides.getOverrideMap();
-        if (overrides && overrides.imports) {
-          var script = document.createElement('script');
-          script.id = "override-map";
-          script.type = "systemjs-importmap";
-          script.textContent = JSON.stringify(overrides);
-          document.head.appendChild(script);
-        }
+      // Hide the UI panel if not in dev
+      if (location.hostname !== "localhost" || localStorage.getItem('devtools') === 'false' || localStorage.getItem('devtools') === null) {
+        window.addEventListener("load", function () {
+          var popup = document.querySelector("import-map-overrides-full");
+          console.log("popup", popup);
 
-        // Check for devtools flag in localStorage
-        if (localStorage.getItem('devtools') === 'true') {
-          window.addEventListener('load', function () {
-            if (popup) {
-              popup.setAttribute('show', true);
-              console.log('Devtools panel opened via localStorage flag');
-            }
-          });
-        }
-      } else {
-        if (popup) {
-          popup.setAttribute('show', false);
-        }
+          if (popup) {
+            popup.style.display = "none";
+          }
+        });
       }
     })();
   </script>
