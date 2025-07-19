@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="importmap-type" content="systemjs-importmap" />
-  <link rel="icon" href="/dist/art/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/playground/art/favicon.ico" type="image/x-icon" />
 
   <title>React with SystemJS</title>
 
   <!-- Import map overrides library -->
-  <script src="/dist/vendor/import-map-overrides/import-map-overrides.min.js"></script>
+  <script src="/playground/vendor/import-map-overrides/import-map-overrides.min.js"></script>
 
   <!-- BASE IMPORT MAP - Will be overridden -->
   <script type="systemjs-importmap" id="base-map">
         {
       "imports": {
-        "React": "/dist/vendor/react/react.development.js",
-        "ReactDOM": "/dist/vendor/react-dom/react-dom.development.js",
-        "app": "/dist/js/bundle.js"
+        "React": "/playground/vendor/react/react.development.js",
+        "ReactDOM": "/playground/vendor/react-dom/react-dom.development.js",
+        "app": "/playground/js/bundle.js"
       }
     }
     </script>
@@ -48,7 +48,7 @@
   </script>
 
   <!-- Load SystemJS after all import maps are set -->
-  <script src="/dist/vendor/systemjs/system.js" type="application/javascript"></script>
+  <script src="/playground/vendor/systemjs/system.js" type="application/javascript"></script>
 
   <script>
     window.addEventListener('load', function () {
